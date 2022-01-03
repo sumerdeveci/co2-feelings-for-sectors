@@ -24,7 +24,7 @@ export class FeelingFormComponent implements OnInit {
     feelingEmoji: new FormControl(null, [Validators.required, singleEmojijValidator()]),
   });
 
-  @Input() onSubmit: (feeling: FeelingModel) => void =
+  @Input() pressSubmit: (feeling: FeelingModel) => void =
     () => console.warn('FeelingFormComponent -> No function assigned for the onSubmit variable');
 
   @Input() defaultFeeling: Partial<FeelingModel> | undefined;
@@ -54,11 +54,11 @@ export class FeelingFormComponent implements OnInit {
       });
   }
 
-  onPressSubmit = (): void => {
+  onSubmit = (): void => {
     if (this.feelingForm.valid) {
       const { sectorName, co2Amount, feelingEmoji } = this.feelingForm.value;
       const newFeeling: FeelingModel = { id: this.defaultFeeling?.id || uuid.v4(), sectorName: sectorName, co2Amount, feelingEmoji }
-      this.onSubmit(newFeeling);
+      this.pressSubmit(newFeeling);
     }
   }
 

@@ -21,7 +21,8 @@ export class EditEmojiDialogComponent {
   }
 
   onCancelClick = (): void => {
-    this.dialogRef.close();
+    // Pass the data which was originally given to the component, as the edit operation is cancelled now
+    this.dialogRef.close(this.data.feelingEmoji);
   }
 
   onSave = (): void => {

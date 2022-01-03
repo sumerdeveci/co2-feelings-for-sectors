@@ -8,9 +8,9 @@ describe('EditEmojiDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditEmojiDialogComponent ]
+      declarations: [EditEmojiDialogComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { SectorsResponse } from 'src/app/models/sector.model';
+import { SectorsResponse } from 'src/app/models/response/sectors-response.model';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({

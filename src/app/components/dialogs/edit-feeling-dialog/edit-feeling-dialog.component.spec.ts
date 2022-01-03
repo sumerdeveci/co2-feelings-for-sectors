@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditEmojiDialogComponent } from './edit-feeling-dialog.component';
+import { EditFeelingDialogComponent } from './edit-feeling-dialog.component';
 
 describe('EditEmojiDialogComponent', () => {
-  let component: EditEmojiDialogComponent;
-  let fixture: ComponentFixture<EditEmojiDialogComponent>;
+  let component: EditFeelingDialogComponent;
+  let fixture: ComponentFixture<EditFeelingDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditEmojiDialogComponent ]
+      declarations: [ EditFeelingDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditEmojiDialogComponent);
+    fixture = TestBed.createComponent(EditFeelingDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

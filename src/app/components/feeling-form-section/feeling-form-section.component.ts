@@ -10,7 +10,7 @@ import { AddFeelingAction } from 'src/shared/state/FeelingsState/feelings.action
 export class FeelingFormSectionComponent {
   constructor(private store: Store,) { }
 
-  onSubmit = (newFeeling: FeelingModel) => {
+  onSubmit = (newFeeling: FeelingModel): void => {
     this.store.dispatch(new AddFeelingAction(newFeeling))
   }
 }
