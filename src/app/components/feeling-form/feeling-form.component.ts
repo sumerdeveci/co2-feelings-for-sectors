@@ -8,6 +8,7 @@ import { EditEmojiDialogComponent } from 'src/app/components/dialogs/edit-emoji-
 import { FeelingModel } from 'src/app/models/feeling.model';
 import { SectorService } from 'src/app/services/sector.service';
 import { singleEmojijValidator } from 'src/app/utils/form';
+import { handleError } from 'src/app/utils/error';
 
 @UntilDestroy()
 @Component({
@@ -32,7 +33,7 @@ export class FeelingFormComponent implements OnInit {
     private sectorService: SectorService,
     public editEmojiDialog: MatDialog
   ) { }
-  
+
   ngOnInit(): void {
     // Use the input data from defaultFeeling if it exists
     if (this.defaultFeeling) {
@@ -43,13 +44,17 @@ export class FeelingFormComponent implements OnInit {
       })
     }
 
+    // Get sectors data
     this.sectorService
       .getSectors()
       .pipe(untilDestroyed(this))
-      .subscribe((sectorsResponse) => (this.sectorNames = sectorsResponse.children.map(sector => sector.name)));
+      .subscribe({
+        next: (sectorsResponse) => (this.sectorNames = sectorsResponse.children.map(sector => sector.name)),
+        error: (error) => handleError(error)
+      });
   }
 
-  onPressSubmit(): void {
+  onPressSubmit = (): void => {
     if (this.feelingForm.valid) {
       const { sectorName, co2Amount, feelingEmoji } = this.feelingForm.value;
       const newFeeling: FeelingModel = { id: this.defaultFeeling?.id || uuid.v4(), sectorName: sectorName, co2Amount, feelingEmoji }
@@ -57,7 +62,7 @@ export class FeelingFormComponent implements OnInit {
     }
   }
 
-  openDialog(): void {
+  openDialog = (): void => {
     const dialogRef = this.editEmojiDialog.open(EditEmojiDialogComponent, {
       width: '300px',
       data: { feelingEmoji: this.feelingForm.value.feelingEmoji },
@@ -70,4 +75,8 @@ export class FeelingFormComponent implements OnInit {
       });
   }
 
+  alertDirectEmojiInputNotAllowed = (): void =>
+    alert(
+      'Direct emoji input is not allowed. Please use the "Edit" button as specified in the mockup here:\n\nhttps://ninjastorage.blob.core.windows.net/htmlexport/1Q8FKHx/7a6e7638-f522-78bd-6a6c-342006bc0f94.html'
+    )
 }

@@ -1,4 +1,8 @@
-<form [formGroup]="feelingForm" (ngSubmit)="onPressSubmit()" class="feeling-form">
+<form
+  [formGroup]="feelingForm"
+  (ngSubmit)="onPressSubmit()"
+  class="feeling-form"
+>
   <mat-form-field appearance="outline">
     <mat-label>Sector</mat-label>
     <mat-select formControlName="sectorName" appearance="fill">
@@ -15,9 +19,21 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Feeling</mat-label>
-      <input matInput readonly type="text" formControlName="feelingEmoji" />
+      <input
+        matInput
+        readonly
+        type="text"
+        formControlName="feelingEmoji"
+        (click)="alertDirectEmojiInputNotAllowed()"
+      />
     </mat-form-field>
-    <button mat-button color="secondary" (click)="openDialog()" type="button" class="edit-button">
+    <button
+      mat-button
+      color="secondary"
+      (click)="openDialog()"
+      type="button"
+      class="edit-button"
+    >
       Edit
     </button>
   </div>

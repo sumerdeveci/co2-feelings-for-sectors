@@ -8,6 +8,7 @@ import { FeelingModel } from 'src/app/models/feeling.model';
 import { AgTableActionButtonsComponent } from 'src/app/components/ag-table-action-buttons/ag-table-action-buttons.component';
 import { RemoveFeelingAction } from 'src/shared/state/FeelingsState/feelings.actions';
 import { EditFeelingDialogComponent } from 'src/app/components/dialogs/edit-feeling-dialog/edit-feeling-dialog.component';
+import { handleError } from 'src/app/utils/error';
 
 @UntilDestroy()
 @Component({
@@ -25,8 +26,9 @@ export class FeelingTableComponent {
   ) {
     this.store.select(state => state.feelings.items)
       .pipe(untilDestroyed(this))
-      .subscribe((feelings: FeelingModel[]) => {
-        this.rowsData = feelings
+      .subscribe({
+        next: (feelings: FeelingModel[]) => this.rowsData = feelings,
+        error: (error) => handleError(error)
       });
 
     this.agFrameworkComponents = {

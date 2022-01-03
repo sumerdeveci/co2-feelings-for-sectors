@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { PageNotFoundPageModule } from 'src/app/pages/page-not-found-page/page-n
 
 import { environment } from 'src/environments/environment.prod';
 import { FeelingsState, FEELINGS_STATE_TOKEN } from 'src/shared/state/FeelingsState/feelings.state';
+import { GlobalErrorHandler } from 'src/app/utils/injectables/global-error-handler';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { FeelingsState, FEELINGS_STATE_TOKEN } from 'src/shared/state/FeelingsSt
     // Other
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

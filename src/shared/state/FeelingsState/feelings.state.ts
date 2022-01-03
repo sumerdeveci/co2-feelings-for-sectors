@@ -39,9 +39,9 @@ export class FeelingsState {
     const state = getState();
     const filteredItems = state.items.filter(item => item.id !== feeling.id);
 
-    // TODO better error handling
     if (filteredItems.length !== state.items.length - 1) {
       console.error('Cannot edit, feeling id not found')
+      alert('Cannot edit, feeling id not found')
     } else {
       setState({ items: [...filteredItems, feeling] });
     }
