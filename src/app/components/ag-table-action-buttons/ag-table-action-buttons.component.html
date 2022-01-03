@@ -1,0 +1,9 @@
+<button
+  mat-button
+  *ngFor="let buttonConfig of buttonConfigs"
+  type="button"
+  (click)="buttonConfig.onButtonClick(params!.node.data)"
+>
+  {{ buttonConfig.buttonLabel }}
+</button>
+<p>abc</p>
