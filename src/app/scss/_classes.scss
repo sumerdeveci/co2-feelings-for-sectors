@@ -1,0 +1,14 @@
+.page {
+  min-height: 100vh;
+  background-color: $background-1;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}

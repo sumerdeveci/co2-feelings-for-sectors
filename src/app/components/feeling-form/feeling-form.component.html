@@ -1,0 +1,34 @@
+<form [formGroup]="feelingForm" (ngSubmit)="onPressSubmit()" class="feeling-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Sector</mat-label>
+    <mat-select formControlName="sectorName" appearance="fill">
+      <mat-option *ngFor="let sectorName of sectorNames" [value]="sectorName">{{
+        sectorName
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>CO2</mat-label>
+    <input matInput type="number" formControlName="co2Amount" />
+  </mat-form-field>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Feeling</mat-label>
+      <input matInput readonly type="text" formControlName="feelingEmoji" />
+    </mat-form-field>
+    <button mat-button color="secondary" (click)="openDialog()" type="button" class="edit-button">
+      Edit
+    </button>
+  </div>
+
+  <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    [disabled]="!feelingForm.valid"
+    class="submit-button"
+  >
+    Submit
+  </button>
+</form>
