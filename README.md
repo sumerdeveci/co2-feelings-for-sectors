@@ -17,7 +17,7 @@ This challenge is completed by referencing the mockup provided in [this link.](h
 - [x] Different routes for adding items and showing list
 - [x] Editing rows in table
 - [x] Removing rows from table
-- [ ] Deployed to a static URL
+- [x] Deployed to a static URL
 
 ## Architecture
 
