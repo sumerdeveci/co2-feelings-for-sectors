@@ -40,8 +40,7 @@ export class FeelingsState {
     const filteredItems = state.items.filter(item => item.id !== feeling.id);
 
     if (filteredItems.length !== state.items.length - 1) {
-      console.error('Cannot edit, feeling id not found')
-      alert('Cannot edit, feeling id not found')
+      throw new Error('Cannot edit, feeling id not found')
     } else {
       setState({ items: [...filteredItems, feeling] });
     }
