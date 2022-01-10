@@ -1,12 +1,12 @@
-@import '../../scss/main.scss';
+@import '/src/app/scss/main';
 
-.new-feeling-page {
+.feeling-table-page {
   padding: 80px 50px;
   display: flex;
   flex-direction: column;
 }
 
-.change-page-button{
+.change-page-button {
   margin-top: 3em;
   width: fit-content;
 }

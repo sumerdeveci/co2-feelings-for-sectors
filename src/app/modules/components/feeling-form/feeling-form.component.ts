@@ -6,9 +6,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { EditEmojiDialogComponent } from 'src/app/components/dialogs/edit-emoji-dialog/edit-emoji-dialog.component';
 import { FeelingModel } from 'src/app/models/feeling.model';
-import { SectorService } from 'src/app/services/sector.service';
-import { singleEmojijValidator } from 'src/app/utils/form';
-import { handleError } from 'src/app/utils/error';
+import { SectorService } from 'src/app/services/data/sector.service';
+import { ErrorService } from 'src/app/services/utils/error/error.service';
+import { FormService } from 'src/app/services/utils/form/form.service';
 
 @UntilDestroy()
 @Component({
@@ -21,7 +21,7 @@ export class FeelingFormComponent implements OnInit {
   feelingForm: FormGroup = new FormGroup({
     sectorName: new FormControl(null, [Validators.required]),
     co2Amount: new FormControl(null, [Validators.required, Validators.min(0)]),
-    feelingEmoji: new FormControl(null, [Validators.required, singleEmojijValidator()]),
+    feelingEmoji: new FormControl(null, [Validators.required, this.formService.singleEmojijValidator()]),
   });
 
   @Input() pressSubmit: (feeling: FeelingModel) => void =
@@ -31,6 +31,8 @@ export class FeelingFormComponent implements OnInit {
 
   constructor(
     private sectorService: SectorService,
+    private errorService: ErrorService,
+    private formService: FormService,
     public editEmojiDialog: MatDialog
   ) { }
 
@@ -50,7 +52,7 @@ export class FeelingFormComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (sectorsResponse) => (this.sectorNames = sectorsResponse.children.map(sector => sector.name)),
-        error: (error) => handleError(error)
+        error: (error) => this.errorService.handleError(error)
       });
   }
 

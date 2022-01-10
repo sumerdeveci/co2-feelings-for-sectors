@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { SectorsResponse } from 'src/app/models/response/sectors-response.model';
 import { environment } from 'src/environments/environment.prod';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class SectorService {
   constructor(private http: HttpClient) { }
 

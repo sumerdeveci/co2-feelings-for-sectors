@@ -19,6 +19,72 @@ This challenge is completed by referencing the mockup provided in [this link.](h
 - [x] Removing rows from table
 - [ ] Deployed to a static URL
 
+## Architecture
+
+### Simple - No description
+
+The simple foldering architecture of the application is as follows:
+- app
+  - modules
+    - pages
+    - components
+    - other
+  - components
+    - ...list of non-module components
+  - services
+    - data
+    - utils
+  - models
+    - response
+    - ...list of application models
+  - scss
+- shared
+  - state
+
+### Simple - With description
+
+The simple architecture with short descriptions is as follows:
+
+- app
+  - modules
+  <br />
+  ```Anything that is packed as a module```
+    - pages
+    <br />
+    ```Glue for components, no business logic```
+    - components
+    <br />
+    ```Components that needs to be served as a module to be used in several other modules```
+    - other
+    <br />
+    ```Any other module that doesn't fit above description```
+  - components
+    - ...list of non-module components
+  - services
+    - data
+    <br />
+    ```Services with connection to any remote server / backend```
+    - utils
+    <br />
+    ```Services containing functions which concern only in-app features and does not connect with anything outside the app```
+  - models
+  <br />
+  ```Data models to be used in the app```
+    - response
+    <br />
+    ```Data models to be fetched directly from the APIs```
+    - ...list of application models
+    <br />
+    ```Data models concerning UI elements and frontend application's data types, without considering API data types```
+  - scss
+  <br />
+  ```Central styling```
+- shared
+  - state
+  <br />
+  ```State that is not feature-based and shared throughout the app```
+
+
 ## Mentions:
 - Interfaces are used over classes as models. In a bigger app classes should be used to represent the models and they should be processed by mappers when inserting remotely-fetched json data into the frontend application.
 

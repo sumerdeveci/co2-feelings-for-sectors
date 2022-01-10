@@ -8,7 +8,7 @@ import { FeelingModel } from 'src/app/models/feeling.model';
 import { AgTableActionButtonsComponent } from 'src/app/components/ag-table-action-buttons/ag-table-action-buttons.component';
 import { RemoveFeelingAction } from 'src/shared/state/FeelingsState/feelings.actions';
 import { EditFeelingDialogComponent } from 'src/app/components/dialogs/edit-feeling-dialog/edit-feeling-dialog.component';
-import { handleError } from 'src/app/utils/error';
+import { ErrorService } from 'src/app/services/utils/error/error.service';
 
 @UntilDestroy()
 @Component({
@@ -22,18 +22,21 @@ export class FeelingTableComponent {
 
   constructor(
     private store: Store,
+    private errorService: ErrorService,
     public editFeelingDialog: MatDialog
   ) {
     this.store.select(state => state.feelings.items)
       .pipe(untilDestroyed(this))
       .subscribe({
         next: (feelings: FeelingModel[]) => this.rowsData = feelings,
-        error: (error) => handleError(error)
+        error: (error) => this.errorService.handleError(error)
       });
 
     this.agFrameworkComponents = {
       actionButtonsRenderer: AgTableActionButtonsComponent,
     }
+
+    this.errorService.handleError('some errorrrrrr');
   }
 
   private onEditButtonClick = (rowData: FeelingModel) => {

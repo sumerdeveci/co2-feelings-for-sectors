@@ -9,14 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
-import { NewFeelingPageModule } from 'src/app/pages/new-feeling-page/new-feeling-page.module';
-import { FeelingTablePageModule } from 'src/app/pages/feeling-table-page/feeling-table-page.module';
-import { PageNotFoundPageModule } from 'src/app/pages/page-not-found-page/page-not-found-page.module';
+import { NewFeelingPageModule } from 'src/app/modules/pages/new-feeling-page/new-feeling-page.module';
+import { FeelingTablePageModule } from 'src/app/modules/pages/feeling-table-page/feeling-table-page.module';
+import { PageNotFoundPageModule } from 'src/app/modules/pages/page-not-found-page/page-not-found-page.module';
 
 import { environment } from 'src/environments/environment.prod';
 import { FeelingsState, FEELINGS_STATE_TOKEN } from 'src/shared/state/FeelingsState/feelings.state';
-import { GlobalErrorHandler } from 'src/app/utils/injectables/global-error-handler';
-
+import { GlobalErrorService } from 'src/app/services/utils/global-error/global-error.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,7 @@ import { GlobalErrorHandler } from 'src/app/utils/injectables/global-error-handl
     // Other
     HttpClientModule,
   ],
-  providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}],
+  providers: [{ provide: ErrorHandler, useClass: GlobalErrorService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

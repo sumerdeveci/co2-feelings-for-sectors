@@ -1,33 +1,32 @@
 import { NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { FeelingFormComponent } from 'src/app/components/feeling-form/feeling-form.component';
+import { FeelingFormComponent } from 'src/app/modules/components/feeling-form/feeling-form.component';
 import { EditEmojiDialogComponent } from 'src/app/components/dialogs/edit-emoji-dialog/edit-emoji-dialog.component';
+import { CoreModule } from 'src/app/modules/other/core/core.module';
+import { FormCoreModule } from 'src/app/modules/other/form-core/form-core.module';
+import { SectorService } from 'src/app/services/data/sector.service';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CoreModule,
+    FormCoreModule,
 
     // Material UI
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-
-    // Other
-    FormsModule,
-    ReactiveFormsModule,
   ],
   declarations: [
     FeelingFormComponent,
     EditEmojiDialogComponent,
   ],
+  providers: [SectorService],
   exports: [
     FeelingFormComponent,
   ],
