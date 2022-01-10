@@ -90,8 +90,6 @@ The simple architecture with short descriptions is as follows:
 
 - A global error handler class and alerts are used for quick error hanndling, there should be an extensive error handling mechanism in place for bigger apps. I did not focus too much on the error handling part as it was not specified on the challenge requirements document.
 
-- Probably a comprehensive `CoreModule` could be created for a bigger app.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
