@@ -35,8 +35,6 @@ export class FeelingTableComponent {
     this.agFrameworkComponents = {
       actionButtonsRenderer: AgTableActionButtonsComponent,
     }
-
-    this.errorService.handleError('some errorrrrrr');
   }
 
   private onEditButtonClick = (rowData: FeelingModel) => {
